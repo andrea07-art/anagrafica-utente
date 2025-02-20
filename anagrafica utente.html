@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina di Registrazione</title>
+</head>
+<body>
+  <h1>Registrazione Utente</h1>
+  <form id="userForm">
+    <label for="nome">Nome: </label><input type="text" id="nome" required><br><br>
+    <label for="cognome">Cognome: </label><input type="text" id="cognome" required><br><br>
+    <label for="email">Email: </label><input type="email" id="email" required><br><br>
+    <button type="submit">Salva</button>
+  </form>
+
+  <script>
+    
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const nome = document.getElementById("nome").value;
+      const cognome = document.getElementById("cognome").value;
+      const email = document.getElementById("email").value;
+
+      
+      const utente = {
+        nome: nome,
+        cognome: cognome,
+        email: email
+      };
+
+      
+      let utenti = JSON.parse(localStorage.getItem("utenti")) || [];
+      utenti.push(utente);
+
+      localStorage.setItem("utenti", JSON.stringify(utenti));
+
+      
+      document.getElementById("userForm").reset();
+      alert("Utente registrato con successo!");
+    });
+  </script>
+</body>
+</html>
+ html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina di Registrazione</title>
+</head>
+<body>
+  <h1>Registrazione Utente</h1>
+  <form id="userForm">
+    <label for="nome">Nome: </label><input type="text" id="nome" required><br><br>
+    <label for="cognome">Cognome: </label><input type="text" id="cognome" required><br><br>
+    <label for="email">Email: </label><input type="email" id="email" required><br><br>
+    <button type="submit">Salva</button>
+  </form>
+
+  <script>
+    document.getElementById("userForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const nome = document.getElementById("nome").value;
+      const cognome = document.getElementById("cognome").value;
+      const email = document.getElementById("email").value;
+
+      const utente = {
+        nome: nome,
+        cognome: cognome,
+        email: email
+      };
+
+      utenti.push(utente);
+      localStorage.setItem("utenti", JSON.stringify(utenti));
+
+      
+      document.getElementById("userForm").reset();
+      alert("Utente registrato con successo!");
+    });
+  </script>
+</body>
+</html>
