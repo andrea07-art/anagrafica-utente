@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista Utenti</title>
+</head>
+<body>
+  <h1>Lista degli Utenti Registrati</h1>
+  <div id="userList"></div>
+
+  <script>
+    
+    window.onload = function() {
+      
+      const utenti = JSON.parse(localStorage.getItem("utenti")) || [];
+
+      
+      if (utenti.length === 0) {
+        document.getElementById("userList").innerHTML = "<p>Nessun utente registrato.</p>";
+        return;
+      }
+
+    
+      let listaHtml = "<ul>";
+      utenti.forEach(function(utente) {
+        listaHtml += `<li>Nome: ${utente.nome}, Cognome: ${utente.cognome}, Email: ${utente.email}</li>`;
+      });
+      listaHtml += "</ul>";
+
+      
+      document.getElementById("userList").innerHTML = listaHtml;
+    };
+  </script>
+</body>
+</html>
